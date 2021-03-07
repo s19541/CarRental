@@ -1,0 +1,113 @@
+<%- include('../../fragments/header.ejs') %>
+<%- include('../../fragments/logout.ejs') %>
+<%- include('../../fragments/errors.ejs') %>
+<main>
+    <script type="application/javascript" src="/js/validationRentForm.js"></script>
+        <h2><%= pageTitle %></h2>
+        <form class="form" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();">
+
+                <input type="hidden" name="_id" value="<%= rent._id %>">
+
+                <label for="klient"><%= __('rent.fields.client') %>:<sup>*</sup></label>
+                <select id="klient" name="client_id" 
+                <% if (validationErrors!=null) { %>
+                    class="<%= validationErrors.find(e => e.path.includes('client_id')) ? 'error-input' : '' %>"
+                <% } %>
+                required <%= (formMode == 'showDetails') ? 'disabled' : ''%> >
+                    <option value="" selected hidden="hidden">--- Wybierz Klienta ---</option>
+                    <% for (let i=0; i<allClients.length; i++) { let client = allClients[i]; %>
+                        <option value="<%= client._id %>" label="<%= client.imie + ' ' + client.nazwisko %>" 
+                            <%= ((!validationErrors && rent._id && client._id.toString() == rent.client._id.toString())||(validationErrors && client._id.toString() == rent.client_id.toString())) ? 'selected' : ''%>></option>
+                    <% } %>
+                </select>
+                <span id="errorKlient" class="errors-text">
+                    <% if (validationErrors!=null) { %>
+                    <% if (validationErrors.find(e => e.path.includes('client_id'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('client_id')).message %>
+                    <% } %>
+                    <% } %>
+                </span>
+
+                <label for="pojazd"><%= __('rent.fields.car') %>:<sup>*</sup></label>
+                <select id="pojazd" name="car_id" 
+                <% if (validationErrors!=null) { %>
+                    class="<%= validationErrors.find(e => e.path.includes('car_id')) ? 'error-input' : '' %>"
+                <% } %>
+                required <%= (formMode == 'showDetails') ? 'disabled' : ''%> >
+                    <option value="" selected hidden="hidden">--- Wybierz Pojazd ---</option>
+                    <% for (let i=0; i<allCars.length; i++) { let car = allCars[i]; %>
+                        <option value="<%= car._id %>" label="<%= car.marka + ' ' + car.model %>"
+                            <%= ((!validationErrors && rent._id && car._id.toString() == rent.car._id.toString())||(validationErrors && car._id.toString() == rent.car_id.toString())) ? 'selected' : ''%>></option>
+                    <% } %>
+                </select>
+                <span id="errorPojazd" class="errors-text">
+                    <% if (validationErrors!=null) { %>
+                    <% if (validationErrors.find(e => e.path.includes('car_id'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('car_id')).message %>
+                    <% } %>
+                    <% } %>
+                </span>
+
+                <label for="dataWynajmu"><%= __('rent.fields.rentDate') %>:<sup>*</sup></label>
+                <% if (formMode=='createNew'||validationErrors!=null) { %>
+                    <input type="date" name="data_wynajmu" id="dataWynajmu" value="<%= rent.data_wynajmu ? rent.data_wynajmu : 'null' %>"
+                <% } else { %>
+                    <input type="date" name="data_wynajmu" id="dataWynajmu" value="<%= rent.data_wynajmu ? rent.data_wynajmu.toISOString().split('T')[0] : 'null' %>"
+                <% } %>
+                <% if (validationErrors!=null) { %>
+                    class="<%= validationErrors.find(e => e.path.includes('data_wynajmu')) ? 'error-input' : '' %>"
+                <% } %>
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+                <span id="errorDataWynajmu" class="errors-text">
+                    <% if (validationErrors!=null) { %>
+                    <% if (validationErrors.find(e => e.path.includes('data_wynajmu'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('data_wynajmu')).message %>
+                    <% } %>
+                    <% } %>
+                </span>
+
+                <label for="dataZwrotu"><%= __('rent.fields.returnDate') %>:</label>
+                <% if (formMode=='createNew'||validationErrors!=null) { %>
+                    <input type="date" name="data_zwrotu" id="dataZwrotu" value="<%= rent.data_zwrotu ? rent.data_zwrotu : 'null' %>"
+                <% } else { %>
+                <input type="date" name="data_zwrotu" id="dataZwrotu" value="<%= rent.data_zwrotu ? rent.data_zwrotu.toISOString().split('T')[0] : 'null' %>"
+                <% } %>
+                <% if (validationErrors!=null) { %>
+                    class="<%= validationErrors.find(e => e.path.includes('data_zwrotu')) ? 'error-input' : '' %>"
+                <% } %>
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+                <span id="errorDataZwrotu" class="errors-text">
+                    <% if (validationErrors!=null) { %>
+                    <% if (validationErrors.find(e => e.path.includes('data_zwrotu'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('data_zwrotu')).message %>
+                    <% } %>
+                    <% } %>
+                </span>
+
+                <label for="przejechanyDystans"><%= __('rent.fields.distanceTraveled') %>:<sup>*</sup></label>
+                <input type="number" name="przejechany_dystans" id="przejechanyDystans" value="<%= rent.przejechany_dystans %>"
+                <% if (validationErrors!=null) { %>
+                    class="<%= validationErrors.find(e => e.path.includes('przejechany_dystans')) ? 'error-input' : '' %>"
+                <% } %>
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+                <span id="errorPrzejechanyDystans" class="errors-text">
+                    <% if (validationErrors!=null) { %>
+                    <% if (validationErrors.find(e => e.path.includes('przejechany_dystans'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('przejechany_dystans')).message %>
+                    <% } %>
+                    <% } %>
+                </span>
+                
+                <% if (formMode != 'showDetails') { %>
+                <div class="form-buttons">
+                    <p id="errorsSummary" class="errors-text"></p>
+                    <input type="submit" class="form-button-submit" value="<%=btnLabel%>" />
+                    <a href="/rents" class="form-button-cancel"><%= __('form.actions.cancel') %></a>    
+                </div>
+                <% } else { %>
+                    <a href="/rents/edit/<%= rent._id %>" class="details-actions-button-edit"><%= __('form.actions.edit') %></a>
+                    <a class="details-actions-button-return" href="/rents"><%= __('form.actions.return') %></a>
+                <% } %>
+        </form>
+</main>
+<%- include('../../fragments/footer.ejs') %>

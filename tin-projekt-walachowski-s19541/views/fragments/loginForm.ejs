@@ -1,0 +1,21 @@
+<% if(!loggedUser) { %>
+    <div id="login" class="login">
+        <form method="post" action="/login" novalidate>
+            <label for="login"><%= __('client.fields.login') %>:</label>
+            <input type="login" id="login" name="login">
+
+            <label for="haslo"><%= __('client.fields.password') %>:</label>
+            <input type="haslo" id="haslo" name="haslo">
+
+            <input type="submit" class="list-actions-button-details" value = "<%= __('login.logIn') %>">
+            <span id="loginErrors"><%= loginError ? loginError : ''%></span>
+            <a href="/clients/add" class="list-actions-button-edit"><%= __('login.register') %></a>
+            
+        </form>
+    </div>
+<% } else { %>
+    <div id="logout" class="logout">
+    <span><%= __('login.loginInfo') %> <%=loggedUser.imie + " " + loggedUser.nazwisko%></span>
+    <a href="/logout" class="list-actions-button-delete"><%= __('login.logOut') %></a>
+    </div>
+<% } %>

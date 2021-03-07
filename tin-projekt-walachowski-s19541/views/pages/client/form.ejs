@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUPER CAR RENTAL</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/validationCommon.js"></script>
+</head>
+<body>
+    <header>
+        <h1>SUPER CAR RENTAL</h1>
+        <img src="/images/logo.jpg" alt="Logo">
+    </header>
+    <nav>
+        <ul>
+            <% if(loggedUser) { %>
+            <li><a href="/" class="<%= navLocation == 'main' ? 'active' : ''%>"><%= __('nav.main-page') %></a></li>
+            <li><a href="/cars" class="<%= navLocation == 'car' ? 'active' : ''%>"><%= __('nav.cars') %></a></li>
+            <li><a href="/clients" class="<%= navLocation == 'client' ? 'active' : ''%>"><%= __('nav.clients') %></a></li>
+            <li><a href="/rents" class="<%= navLocation == 'rent' ? 'active' : ''%>"><%= __('nav.rents') %></a></li>
+            <% } %>
+            <ul>
+                <li style="float:right"><a href="/changeLang/pl" class="<%= lang == 'pl' ? 'active' : ''%>">PL</a></li>
+                <li style="float:right"><a href="/changeLang/en" class="<%= lang == 'en' ? 'active' : ''%>">EN</a></li>
+            </ul>
+        </ul>
+    </nav>
+    <div id="logout" class="logout">
+        <span><%= __('login.loginInfo') %> <%=loggedUser.imie + " " + loggedUser.nazwisko%></span>
+        <a href="/logout" class="list-actions-button-delete"><%= __('login.logOut') %></a>
+    </div>
+    <div style="display: none">
+        <span id="errorMessage-required"><%= __('validation.messages.required') %></span>
+        <span id="errorMessage-minMax"><%= __('validation.messages.minMax') %></span>
+        <span id="errorMessage-contains"><%= __('validation.messages.contains') %></span>
+        <span id="errorMessage-to"><%= __('validation.messages.to') %></span>
+        <span id="errorMessage-characters"><%= __('validation.messages.characters') %></span>
+        <span id="errorMessage-invalidForm"><%= __('validation.messages.invalidForm') %></span>
+        <span id="errorMessage-nonNegative"><%= __('validation.messages.nonNegative') %></span>
+        <span id="errorMessage-futureData"><%= __('validation.messages.futureData') %></span>
+        <span id="errorMessage-dates"><%= __('validation.messages.dates') %></span>
+     </div>
+<main>
+    <script type="application/javascript" src="/js/validationClientForm.js"></script>
+        <h2><%= pageTitle %></h2>
+        <form class="form" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();">
+
+                <input type="hidden" name="_id" value="<%= client._id %>">
+
+                <label for="imie"><%= __('client.fields.firstName') %>:<sup>*</sup></label>
+                <input type="text" name="imie" id="imie" placeholder="2-60 znaków" value="<%= client.imie %>"
+                <% if (validationErrors!=null) { %>
+                class="<%= validationErrors.find(e => e.path.includes('imie')) ? 'error-input' : '' %>"
+                <% } %>
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+                <span id="errorImie" class="errors-text">
+                    <% if (validationErrors!=null) { %>
+                    <% if (validationErrors.find(e => e.path.includes('imie'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('imie')).message %>
+                    <% } %>
+                    <% } %>
+                </span>
+            
+                <label for="nazwisko"><%= __('client.fields.lastName') %>:<sup>*</sup></label>
+                <input type="text" name="nazwisko" id="nazwisko" placeholder="2-60 znaków" value="<%= client.nazwisko %>"
+                <% if (validationErrors!=null) { %>
+                    class="<%= validationErrors.find(e => e.path.includes('nazwisko')) ? 'error-input' : '' %>"
+                    <% } %>
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+                <span id="errorNazwisko" class="errors-text">
+                    <% if (validationErrors!=null) { %>
+                        <% if (validationErrors.find(e => e.path.includes('nazwisko'))) { %>
+                            <%= validationErrors.find(e => e.path.includes('nazwisko')).message %>
+                        <% } %>
+                        <% } %>
+                </span>
+
+                <% if (formMode == 'createNew') { %>
+                <label for="login"><%= __('client.fields.login') %>:<sup>*</sup></label>
+                <input type="text" name="login" id="login" placeholder="5-60 znaków" value="<%= client.login %>"
+                <% if (validationErrors!=null) { %>
+                    class="<%= validationErrors.find(e => e.path.includes('login')) ? 'error-input' : '' %>"
+                    <% } %>
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+                <span id="errorLogin" class="errors-text">
+                    <% if (validationErrors!=null) { %>
+                        <% if (validationErrors.find(e => e.path.includes('login'))) { %>
+                            <%= validationErrors.find(e => e.path.includes('login')).message %>
+                        <% } %>
+                        <% } %>
+                </span>
+                
+                <label for="haslo"><%= __('client.fields.password') %>:<sup>*</sup></label>
+                <input type="text" name="haslo" id="haslo" placeholder="5-60 znaków" value="<%= client.haslo %>"
+                <% if (validationErrors!=null) { %>
+                    class="<%= validationErrors.find(e => e.path.includes('haslo')) ? 'error-input' : '' %>"
+                    <% } %>
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+                <span id="errorHaslo" class="errors-text">
+                    <% if (validationErrors!=null) { %>
+                        <% if (validationErrors.find(e => e.path.includes('haslo'))) { %>
+                            <%= validationErrors.find(e => e.path.includes('haslo')).message %>
+                        <% } %>
+                        <% } %>
+                </span>
+                <% } %>
+                
+                <% if (formMode != 'showDetails') { %>
+                <div class="form-buttons">
+                    <p id="errorsSummary" class="errors-text"></p>
+                    <input type="submit" class="form-button-submit" value="<%=btnLabel%>" />
+                    <a href="/clients" class="form-button-cancel"><%= __('form.actions.cancel') %></a>    
+                </div>
+                <% } %>
+        </form>
+
+        <% if (formMode == 'showDetails') { %>
+            <div class="section-buttons">
+                <a href="/clients/edit/<%= client._id %>" class="details-actions-button-edit"><%= __('form.actions.edit') %></a>
+            </div>
+            <% } %>
+
+<% if (formMode == 'showDetails') { %>
+<h2>
+    <%= __('client.form.details.rentHistory') %>
+</h2>
+<table class="details-list">
+    <thead>
+    <tr>
+        <th><%= __('rent.fields.car') %></th>
+        <th><%= __('rent.fields.rentDate') %></th>
+        <th><%= __('rent.fields.returnDate') %></th>
+        <th><%= __('rent.fields.distanceTraveled') %></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% for (let r of client.rents) { %>
+        <tr>
+            <td><a href="/cars/details/<%= r.car._id %>"><%= r.car.marka %> <%= r.car.model %></a></td>
+            <td><%= r.data_wynajmu.toISOString().split('T')[0] %></td>
+            <td><%= r.data_zwrotu ? r.data_zwrotu.toISOString().split('T')[0] : '-' %></td>
+            <td><%= r.przejechany_dystans %></td>
+        </tr>
+    <% } %>
+    </tbody>
+</table>
+    <div class="form-buttons">
+        <p id="errorsSummary" class="errors-text"></p>
+        <a class="details-actions-button-return" href="/clients"><%= __('form.actions.return') %></a>
+    </div>
+<% } %>
+</main>
+<footer>
+    Marcin Wałachowski s19541
+ </footer>
+</body>
+</html>

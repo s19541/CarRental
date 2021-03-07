@@ -1,0 +1,33 @@
+<%- include('../../fragments/header.ejs') %>
+    <main>
+        <h2>Nowy pojazd</h2>
+        <form class="form" novalidate onsubmit="return validateForm();">
+                
+                <label for="marka">marka:<sup>*</sup></label>
+                <input type="text" name="marka" id="marka" placeholder="2-60 znaków" />
+                <span id="errorMarka" class="errors-text"></span>
+                
+                <label for="model">model:<sup>*</sup></label>
+                <input type="text" name="model" id="model" placeholder="2-60 znaków"/>
+                <span id="errorModel" class="errors-text"></span>
+            
+                <label for="cenaZaGodzine">cena za godzine:<sup>*</sup></label>
+                <input type="number" name="cenaZaGodzine" id="cenaZaGodzine" placeholder="10-500 pln"/>
+                <span id="errorCenaZaGodzine" class="errors-text"></span>
+           
+                <label for="cenaZaKilometr">cena za kilometr:<sup>*</sup></label>
+                <input type="number" name="cenaZaKilometr" id="cenaZaKilometr" placeholder="10-200 pln"/>
+                <span id="errorCenaZaKilometr" class="errors-text"></span>
+            
+                <label for="kaucja">kaucja:</label>
+                <input type="number" name="kaucja" id="kaucja" />
+                <span id="errorKaucja" class="errors-text"></span>
+
+            <div class="form-buttons">
+                <p id="errorsSummary" class="errors-text"></p>
+                <input type="submit" class="form-button-submit" value="Dodaj" />
+                <a href="/cars" class="form-button-cancel">Anuluj</a>    
+            </div>
+        </form>
+    </main>
+    <%- include('../../fragments/footer.ejs') %>

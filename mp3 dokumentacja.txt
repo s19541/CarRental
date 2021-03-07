@@ -1,0 +1,18 @@
+Aby przygotować przykładową bazę danych należy:
+1. Zainstalować program Docker
+2. Uruchomić konsole z poziomu katalogu docker i użyć polecenia docker-compose up
+3. Zainstalować bazę MySQL
+4. Wejść pod adres localhost:8183
+5. Zalogować się za pomocą loginu:root i hasła:root na serwer:mysql
+6. Uruchomić zakładkę sql i wkleić tam skrypt (skrypt.txt) oraz go uruchomić
+
+Aby uruchomić projekt należy (po wcześniejszej instalacji i konfiguracji bazy danych):
+1. Najpierw należy uruchomić backend wpisując w konsoli polecenie npm start z poziomu katalogu tin-projekt-walachowski-s19541 (mp2)
+2. Następnie uruchomić frontend poprzez wpisanie komendy npm start na poziomie katalogu tin_mp3_s19541
+3. Następnie automatycznie uruchomi się aplikacja na porcie 8000.
+Wykorzystane technologie:
+1. Node JS
+2. Docker
+3. baza danych MySQL
+4. mysql2
+5. React.js

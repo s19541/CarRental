@@ -1,0 +1,53 @@
+CREATE SCHEMA IF NOT EXISTS `tin`;
+
+CREATE TABLE IF NOT EXISTS `tin`.`Car`
+    ( `_id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
+      `marka` VARCHAR(60) NOT NULL ,
+      `model` VARCHAR(60) NOT NULL ,
+      `cena_za_godzine` INT NOT NULL ,
+	  `cena_za_kilometr` INT NOT NULL ,
+	  `kaucja` INT NOT NULL,
+      PRIMARY KEY (`_id`),
+      UNIQUE INDEX `emp_id_UNIQUE` (`_id` ASC)
+    ) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci;
+
+CREATE TABLE IF NOT EXISTS `tin`.`Client`
+    ( `_id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
+      `imie` VARCHAR(60) NOT NULL ,
+      `nazwisko` VARCHAR(60) NOT NULL ,
+      `login` VARCHAR(60) ,
+      `haslo` VARCHAR(200) ,
+      `rola` VARCHAR(10) ,
+      PRIMARY KEY (`_id`),
+      UNIQUE INDEX `dept_id_UNIQUE` (`_id` ASC)
+    ) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci;
+
+CREATE TABLE IF NOT EXISTS `tin`.`Rent`
+    ( `_id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
+      `data_wynajmu` DATE NOT NULL ,
+      `data_zwrotu` DATE ,
+      `przejechany_dystans` INT NOT NULL ,
+      `car_id` INT UNSIGNED NOT NULL ,
+      `client_id` INT UNSIGNED NOT NULL ,
+      PRIMARY KEY (`_id`),
+      UNIQUE INDEX `employment_id_UNIQUE` (`_id` ASC),
+      CONSTRAINT `car_fk` FOREIGN KEY (`car_id`) REFERENCES `tin`.`Car` (`_id`),
+      CONSTRAINT `client_fk` FOREIGN KEY (`client_id`) REFERENCES `tin`.`Client` (`_id`)
+    ) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci;
+
+INSERT IGNORE INTO `tin`.`Car` (`_id`, `marka`, `model`, `cena_za_godzine`,`cena_za_kilometr`,`kaucja`) VALUES
+  (1, 'Ford', 'Mustang', 100, 5, 500),
+  (2, 'Porshe', '911 turbo s', 150, 10, 1000),
+  (3, 'BMW', 'm2', 110, 6, 600)
+;
+
+INSERT IGNORE INTO `tin`.`Client` (`_id`, `imie`, `nazwisko`, `login`, `haslo`,`rola`) VALUES
+  (1, 'Tomasz', 'Hajto', 'Tom123', '$2a$08$4rwLauRSVz2Smjp6JQYUbOueYnLWSqjBMuecufpoAt.oQolSfdJzC','admin'),
+  (2, 'Marcin', 'Najman', 'El234', '$2a$08$4rwLauRSVz2Smjp6JQYUbOueYnLWSqjBMuecufpoAt.oQolSfdJzC','user')
+;
+
+INSERT IGNORE INTO `tin`.`Rent` (`_id`, `car_id`, `client_id`, `data_wynajmu`, `data_zwrotu`, `przejechany_dystans`) VALUES
+  (1, 1, 1, '2020-01-01', '2020-01-10', 20),
+  (2, 2, 1, '2019-02-01', '2019-02-03', 40),
+  (3, 3, 2, '2018-06-02', null, 300)
+;

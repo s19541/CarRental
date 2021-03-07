@@ -1,0 +1,167 @@
+{
+	"main-page": {
+		"content": "Main page",
+		"text1": "Welcome to our rental website!",
+		"text2": "We are one of the largest rental companies in Poland and we offer a huge selection of cars at good prices.",
+		"text3": "Go to the vehicles tab to view our offers."
+	},
+	"nav": {
+		"main-page": "Main page",
+		"cars": "Cars",
+		"clients": "Clients",
+		"rents": "Rents"
+	},
+	"login": {
+		"logIn": "Log in",
+		"register": "Register",
+		"logOut": "Log out",
+		"loginInfo": "You are logged as:"
+	},
+	"list": {
+		"actions": {
+			"title": "Actions",
+			"details": "Details",
+			"edit": "Edit",
+			"delete": "Delete"
+		}
+	},
+	"form": {
+		"actions": {
+			"return": "Return",
+			"edit": "Edit",
+			"cancel": "Cancel"
+		}
+	},
+	"car": {
+		"fields": {
+			"brand": "Brand",
+			"model": "Model",
+			"pricePerHour": "Price per hour",
+			"pricePerKilometer": "Price per kilometer",
+			"deposit": "Deposit"
+		},
+		"list": {
+			"title": "Car list",
+			"addNew": "Add new car",
+			"noData": "No car in database",
+			"pageTitle": "list of cars"
+		},
+		"form": {
+			"details": {
+				"pageTitle": "Car details",
+				"rentHistory": "Rent history"
+			},
+			"add": {
+				"pageTitle": "New car",
+				"btnLabel": "Add",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The new car has been succesfully created"
+				}
+			},
+			"edit": {
+				"pageTitle": "Editing a car",
+				"btnLabel": "Save changes",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The car has been succesfully updated"
+				}
+			},
+			"rentHistory": "car.form.rentHistory"
+		}
+	},
+	"client": {
+		"fields": {
+			"firstName": "First name",
+			"lastName": "Last name",
+			"login": "Login",
+			"password": "Password"
+		},
+		"list": {
+			"title": "Client list",
+			"addNew": "Add new client",
+			"noData": "No clients in database",
+			"pageTitle": "List of clients"
+		},
+		"form": {
+			"details": {
+				"pageTitle": "Client details",
+				"rentHistory": "Rent history"
+			},
+			"add": {
+				"pageTitle": "New client",
+				"btnLabel": "Add",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The new client has been succesfully created"
+				}
+			},
+			"edit": {
+				"pageTitle": "Editing a client",
+				"btnLabel": "Save changes",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The client has been succesfully updated"
+				}
+			},
+			"rentHistory": "client.form.rentHistory"
+		}
+	},
+	"rent": {
+		"fields": {
+			"client": "Client",
+			"car": "Car",
+			"rentDate": "Rent date",
+			"returnDate": "Return date",
+			"distanceTraveled": "Distance traveled"
+		},
+		"list": {
+			"title": "Rent list",
+			"addNew": "Add new rent",
+			"noData": "No rents in database",
+			"pageTitle": "List of rents"
+		},
+		"form": {
+			"details": {
+				"pageTitle": "Rent details"
+			},
+			"add": {
+				"pageTitle": "New rent",
+				"btnLabel": "Add",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The new rent has been succesfully created"
+				}
+			},
+			"edit": {
+				"pageTitle": "Editing a rent",
+				"btnLabel": "Save changes",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The rent has been succesfully updated"
+				}
+			}
+		}
+	},
+	"rents": {
+		"fields": {
+			"client": "rents.fields.client",
+			"rentDate": "rents.fields.rentDate",
+			"returnDate": "rents.fields.returnDate"
+		}
+	},
+	"validation": {
+		"messages": {
+			"required": "Field is required",
+			"minMax": "Field should be in the range",
+			"contains": "Field should contains from",
+			"to": "to",
+			"characters": "characters",
+			"invalidForm": "Form contains errors",
+			"nonNegative": "Field can't be negative",
+			"futureDate": "Date can't be from the future",
+			"dates": "Return date should be later than rent date",
+			"futureData": "validation.messages.futureData"
+		}
+	}
+}

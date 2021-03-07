@@ -1,0 +1,40 @@
+<%- include('../../fragments/header.ejs') %>
+    <main>
+        <h2>Edytuj dane wynajmu</h2>
+        <form class="form" novalidate onsubmit="return validateForm();">
+            <label for="klient">klient:<sup>*</sup></label>
+            <select id="klient" name="klient">
+                <option value="Tomasz Hajto">Tomasz Hajto</option>
+                <option value="Mariusz Pudzianowski">Mariusz Pudzianowski</option>
+                <option value="Zbigniew Stonoga">Zbigniew Stonoga</option>
+              </select>
+              <span id="errorKlient" class="errors-text"></span>
+
+            <label for="pojazd">pojazd:<sup>*</sup></label>
+            <select id="pojazd" name="pojazd">
+                <option value="Ford Mustang">Ford Mustang</option>
+                <option value="Porshe 911 turbo s">Porshe 911 turbo s</option>
+                <option value="BMW m2">BMW m2</option>
+              </select>
+              <span id="errorPojazd" class="errors-text"></span>
+            
+                <label for="dataWynajmu">data wynajmu:<sup>*</sup></label>
+                <input type="date" name="dataWynajmu" id="dataWynajmu" value="2020-10-21"/>
+                <span id="errorDataWynajmu" class="errors-text"></span>
+           
+                <label for="dataZwrotu">data zwrotu:</label>
+                <input type="date" name="dataZwrotu" id="dataZwrotu" value="2020-10-22"/>
+                <span id="errorDataZwrotu" class="errors-text"></span>
+            
+                <label for="przejechanyDystans">przejechany dystans:<sup>*</sup></label>
+                <input type="number" name="przejechanyDystans" id="przejechanyDystans" value="100"/>
+                <span id="errorPrzejechanyDystans" class="errors-text"></span>
+            
+            <div class="form-buttons">
+                <p id="errorsSummary" class="errors-text"></p>
+                <input type="submit" class="form-button-submit" value="Zatwierdź" />
+                <a href="/rents" class="form-button-cancel">Anuluj</a>    
+            </div>  
+        </form>
+    </main>
+    <%- include('../../fragments/footer.ejs') %>

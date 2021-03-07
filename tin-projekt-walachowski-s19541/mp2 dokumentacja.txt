@@ -1,0 +1,18 @@
+Aby przygotowaæ przyk³adow¹ bazê danych nale¿y:
+1. Zainstalowaæ program Docker
+2. Uruchomiæ konsole z poziomu katalogu docker i u¿yæ polecenia docker-compose up
+3. Zainstalowaæ bazê MySQL
+4. Wejœæ pod adres localhost:8183
+5. Zalogowaæ siê za pomoc¹ loginu:root i has³a:root na serwer:mysql
+6. Uruchomiæ zak³adkê sql i wkleiæ tam skrypt (skrypt.txt) oraz go uruchomiæ
+
+Aby uruchomiæ projekt nale¿y (po wczeœniejszej instalacji i konfiguracji bazy danych):
+1. Uruchomiæ konsole na poziomie katalogu projektu po czym u¿yæ polecenia
+npm start
+2. Wejœæ na adres localhost:3000 w przegl¹darce.
+
+Wykorzystane technologie:
+1. Node JS
+2. Docker
+3. baza danych MySQL
+4. mysql2

@@ -1,0 +1,125 @@
+<%- include('../../fragments/header.ejs') %>
+<%- include('../../fragments/logout.ejs') %>
+<%- include('../../fragments/errors.ejs') %>
+<main>
+    <script type="application/javascript" src="/js/validationCarForm.js"></script>
+        <h2><%= pageTitle %></h2>
+        <form class="form" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();">
+
+                <input type="hidden" name="_id" value="<%= car._id %>">
+
+                <label for="marka"><%= __('car.fields.brand') %>:<sup>*</sup></label>
+                <input type="text" name="marka" id="marka" placeholder="2-60 znaków" value="<%= car.marka %>"
+                <% if (validationErrors!=null) { %>
+                class="<%= validationErrors.find(e => e.path.includes('marka')) ? 'error-input' : '' %>"
+                <% } %>
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+                <span id="errorMarka" class="errors-text">
+                    <% if (validationErrors!=null) { %>
+                    <% if (validationErrors.find(e => e.path.includes('marka'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('marka')).message %>
+                    <% } %>
+                    <% } %>
+                </span>
+            
+                <label for="model"><%= __('car.fields.model') %>:<sup>*</sup></label>
+                <input type="text" name="model" id="model" placeholder="2-60 znaków" value="<%= car.model %>"
+                <% if (validationErrors!=null) { %>
+                class="<%= validationErrors.find(e => e.path.includes('model')) ? 'error-input' : '' %>"
+                <% } %>
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+                <span id="errorModel" class="errors-text">
+                    <% if (validationErrors!=null) { %>
+                    <% if (validationErrors.find(e => e.path.includes('model'))) { %>
+                         <%= validationErrors.find(e => e.path.includes('model')).message %>
+                    <% } %>
+                    <% } %>
+                </span>
+                <label for="cenaZaGodzine"><%= __('car.fields.pricePerHour') %>:<sup>*</sup></label>
+                <input type="number" name="cena_za_godzine" id="cenaZaGodzine" placeholder="10-500 pln" value="<%= car.cena_za_godzine %>"
+                <% if (validationErrors!=null) { %>
+                class="<%= validationErrors.find(e => e.path.includes('cena_za_godzine')) ? 'error-input' : '' %>"
+                <% } %>
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+                <span id="errorCenaZaGodzine" class="errors-text">
+                    <% if (validationErrors!=null) { %>
+                    <% if (validationErrors.find(e => e.path.includes('cena_za_godzine'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('cena_za_godzine')).message %>
+                    <% } %>
+                    <% } %>
+                </span>
+            
+                <label for="cenaZaKilometr"><%= __('car.fields.pricePerKilometer') %>:<sup>*</sup></label>
+                <input type="number" name="cena_za_kilometr" id="cenaZaKilometr" placeholder="10-200 pln" value="<%= car.cena_za_kilometr %>"
+                <% if (validationErrors!=null) { %>
+                class="<%= validationErrors.find(e => e.path.includes('cena_za_kilometr')) ? 'error-input' : '' %>"
+                <% } %>
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+                <span id="errorCenaZaKilometr" class="errors-text">
+                    <% if (validationErrors!=null) { %>
+                    <% if (validationErrors.find(e => e.path.includes('cena_za_kilometr'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('cena_za_kilometr')).message %>
+                    <% } %>
+                    <% } %>
+                </span>
+            
+                <label for="kaucja"><%= __('car.fields.deposit') %>:<sup>*</sup></label>
+                <input type="number" name="kaucja" id="kaucja" value="<%= car.kaucja %>"
+                <% if (validationErrors!=null) { %>
+                class="<%= validationErrors.find(e => e.path.includes('kaucja')) ? 'error-input' : '' %>"
+                <% } %>
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %>/> 
+                <span id="errorKaucja" class="errors-text">
+                    <% if (validationErrors!=null) { %>
+                    <% if (validationErrors.find(e => e.path.includes('kaucja'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('kaucja')).message %>
+                    <% } %>
+                    <% } %>
+                </span>
+                
+                <% if (formMode != 'showDetails') { %>
+                <div class="form-buttons">
+                    <p id="errorsSummary" class="errors-text"></p>
+                    <input type="submit" class="form-button-submit" value="<%=btnLabel%>" />
+                    <a href="/cars" class="form-button-cancel"><%= __('form.actions.cancel') %></a>    
+                </div>
+                <% } %>
+        </form>
+
+        <% if (formMode == 'showDetails') { %>
+            <div class="section-buttons">
+                <a href="/cars/edit/<%= car._id %>" class="details-actions-button-edit"><%= __('form.actions.edit') %></a>
+            </div>
+            <% } %>
+
+<% if (formMode == 'showDetails') { %>
+<h2>
+    <%= __('car.form.details.rentHistory') %>
+</h2>
+<table class="details-list">
+    <thead>
+    <tr>
+        <th><%= __('rent.fields.client') %></th>
+        <th><%= __('rent.fields.rentDate') %></th>
+        <th><%= __('rent.fields.returnDate') %></th>
+        <th><%= __('rent.fields.distanceTraveled') %></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% for (let r of car.rents) { %>
+        <tr>
+            <td><a href="/clients/details/<%= r.client._id %>"><%= r.client.imie %> <%= r.client.nazwisko %></a></td>
+            <td><%= r.data_wynajmu.toISOString().split('T')[0] %></td>
+            <td><%= r.data_zwrotu ? r.data_zwrotu.toISOString().split('T')[0] : '-' %></td>
+            <td><%= r.przejechany_dystans %></td>
+        </tr>
+    <% } %>
+    </tbody>
+</table>
+    <div class="form-buttons">
+        <p id="errorsSummary" class="errors-text"></p>
+        <a class="details-actions-button-return" href="/cars"><%= __('form.actions.return') %></a>
+    </div>
+<% } %>
+</main>
+<%- include('../../fragments/footer.ejs') %>

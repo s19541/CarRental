@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUPER CAR RENTAL</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/validationCommon.js"></script>
+</head>
+<body>
+    <header>
+        <h1>SUPER CAR RENTAL</h1>
+        <img src="/images/logo.jpg" alt="Logo">
+    </header>
+    <nav>
+        <ul>
+            <% if(loggedUser) { %>
+            <li><a href="/" class="<%= navLocation == 'main' ? 'active' : ''%>"><%= __('nav.main-page') %></a></li>
+            <li><a href="/cars" class="<%= navLocation == 'car' ? 'active' : ''%>"><%= __('nav.cars') %></a></li>
+            <li><a href="/clients" class="<%= navLocation == 'client' ? 'active' : ''%>"><%= __('nav.clients') %></a></li>
+            <li><a href="/rents" class="<%= navLocation == 'rent' ? 'active' : ''%>"><%= __('nav.rents') %></a></li>
+            <% } %>
+            <ul>
+                <li style="float:right"><a href="/changeLang/pl" class="<%= lang == 'pl' ? 'active' : ''%>">PL</a></li>
+                <li style="float:right"><a href="/changeLang/en" class="<%= lang == 'en' ? 'active' : ''%>">EN</a></li>
+            </ul>
+        </ul>
+    </nav>
+    

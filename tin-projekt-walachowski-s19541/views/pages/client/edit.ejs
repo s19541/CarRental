@@ -1,0 +1,19 @@
+<%- include('../../fragments/header.ejs') %>
+    <main>
+        <h2>Edytuj dane klienta</h2>
+        <form class="form" novalidate onsubmit="return validateForm();">
+                <label for="imie" class="">imię:<sup>*</sup></label>
+                <input type="text" name="imie" id="imie" value="Tomasz" placeholder="2-60 znaków"/>
+                <span id="errorImie" class="errors-text"></span>
+            
+                <label for="nazwisko">nazwisko:<sup>*</sup></label>
+                <input type="text" name="nazwisko" id="nazwisko" value="Hajto" placeholder="2-60 znaków"/>
+                <span id="errorNazwisko" class="errors-text"></span>
+           <div class="form-buttons">
+                <p id="errorsSummary" class="errors-text"></p>
+                <input type="submit" class="form-button-submit" value="Zatwierdź" />
+                <a href="/clients" class="form-button-cancel">Anuluj</a>  
+            </div>   
+        </form>
+    </main>
+    <%- include('../../fragments/footer.ejs') %>

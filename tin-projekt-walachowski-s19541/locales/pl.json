@@ -1,0 +1,159 @@
+{
+	"main-page": {
+		"content": "Strona główna",
+		"text1": "Witamy na stronie naszej wypożyczalni!",
+		"text2": "Jesteśmy jedną z największych wypożyczalni w polsce i oferujemy ogromny wybór aut w dobrych cenach.",
+		"text3": "Przejdź do zakładki pojazdy, by przejrzeć nasze oferty."
+	},
+	"nav": {
+		"main-page": "Strona główna",
+		"cars": "Pojazdy",
+		"clients": "Klienci",
+		"rents": "Wynajmy"
+	},
+	"login": {
+		"logIn": "Zaloguj się",
+		"register": "Zarejestruj się",
+		"logOut": "Wyloguj się",
+		"loginInfo": "Jesteś zalogowany jako:"
+	},
+    "list": {
+       "actions": {
+          "title": "Akcje",
+          "details": "Szczegóły",
+          "edit": "Edytuj",
+          "delete": "Usuń"
+       }
+    },
+   "form": {
+      "actions": {
+         "return": "Powrót",
+         "edit": "Edytuj",
+         "cancel": "Anuluj"
+      }
+   },
+	"car": {
+		"fields": {
+			"brand": "Marka",
+			"model": "Model",
+            "pricePerHour": "Cena za godzine",
+            "pricePerKilometer": "Cena za kilometr",
+            "deposit": "Kaucja"
+		},
+		"list": {
+			"title": "Lista pojazdów",
+			"addNew": "Dodaj nowy pojazd",
+			"noData": "Brak pojazdów w bazie",
+			"pageTitle": "Lista pojazdów"
+		},
+		"form": {
+			"details": {
+				"pageTitle": "Szczegóły pojazdu",
+				"rentHistory": "Historia wynajmów"
+			},
+			"add": {
+				"pageTitle": "Nowy pojazd",
+				"btnLabel": "Dodaj",
+				"confirm": {
+					"header": "Potwierdzenie operacji",
+					"text": "Pomyślnie dodano pojazd"
+				}
+			},
+			"edit": {
+				"pageTitle": "Edycja pojazdu",
+				"btnLabel": "Zapisz zmiany",
+				"confirm": {
+					"header": "Potwierdzenie operacji",
+					"text": "Pomyślnie zaktualizowano pojazd"
+				}
+			}
+		}
+    },
+    "client": {
+		"fields": {
+			"firstName": "Imię",
+			"lastName": "Nazwisko",
+            "login": "Login",
+            "password": "Hasło"
+		},
+		"list": {
+			"title": "Lista klientów",
+			"addNew": "Dodaj nowego klienta",
+			"noData": "Brak klientów w bazie",
+			"pageTitle": "Lista klientów"
+		},
+		"form": {
+			"details": {
+				"pageTitle": "Szczegóły klienta",
+				"rentHistory": "Historia wynajmów"
+			},
+			"add": {
+				"pageTitle": "Nowy klient",
+				"btnLabel": "Dodaj",
+				"confirm": {
+					"header": "Potwierdzenie operacji",
+					"text": "Pomyślnie dodano klienta"
+				}
+			},
+			"edit": {
+				"pageTitle": "Edycja klienta",
+				"btnLabel": "Zapisz zmiany",
+				"confirm": {
+					"header": "Potwierdzenie operacji",
+					"text": "Pomyślnie zaktualizowano klienta"
+				}
+			}
+		}
+    },
+    "rent": {
+		"fields": {
+			"client": "Klient",
+			"car": "Pojazd",
+            "rentDate": "Data wynajmu",
+            "returnDate": "Data zwrotu",
+            "distanceTraveled": "Przejechany dystans"
+		},
+		"list": {
+			"title": "Lista wynajmów",
+			"addNew": "Dodaj nowy wynajem",
+			"noData": "Brak wynajmów w bazie",
+			"pageTitle": "Lista wynajmów"
+		},
+		"form": {
+			"details": {
+				"pageTitle": "Szczegóły wynajmu"
+			},
+			"add": {
+				"pageTitle": "Nowy wynajem",
+				"btnLabel": "Dodaj",
+				"confirm": {
+					"header": "Potwierdzenie operacji",
+					"text": "Pomyślnie dodano wynajem"
+				}
+			},
+			"edit": {
+				"pageTitle": "Edycja wynajmu",
+				"btnLabel": "Zapisz zmiany",
+				"confirm": {
+					"header": "Potwierdzenie operacji",
+					"text": "Pomyślnie zaktualizowano wynajem"
+				}
+			}
+		}
+	},
+	"validation": {
+		"messages": {
+			"required": "Pole jest wymagane",
+			"minMax": "Pole powinno być w przedziale",
+			"contains": "Pole powinno zawierać od",
+			"to": "do",
+			"characters": "znaków",
+			"invalidForm":"Formularz zawiera błędy",
+			"nonNegative":"Pole nie może być ujemne",
+			"futureDate":"Data nie może być z przyszłości",
+			"dates":"Data zwrotu powinna być późniejsza niż data wynajmu"
+			
+		}
+	}
+
+}

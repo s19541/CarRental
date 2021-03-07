@@ -1,0 +1,57 @@
+<%- include('../../fragments/header.ejs') %>
+    <main>
+        <h2>Szczegóły pojazdu</h2>
+        <form class="form">
+                <label for="marka">marka:<sup>*</sup></label>
+                <input type="text" name="marka" id="marka" value="Ford" disabled/>
+                <span id="errorMarka" class="errors-text"></span>
+            
+                <label for="model">model:<sup>*</sup></label>
+                <input type="text" name="model" id="model" value="Mustang" disabled/>
+                <span id="errorModel" class="errors-text"></span>
+            
+                <label for="cenaZaGodzine">cena za godzine:<sup>*</sup></label>
+                <input type="number" name="cenaZaGodzine" id="cenaZaGodzine" value="100" disabled/>
+                <span id="errorCenaZaGodzine" class="errors-text"></span>
+            
+                <label for="cenaZaKilometr">cena za kilometr:<sup>*</sup></label>
+                <input type="number" name="cenaZaKilometr" id="cenaZaKilometr" value="10" disabled/>
+                <span id="errorCenaZaKilometr" class="errors-text"></span>
+            
+                <label for="kaucja">kaucja:<sup>*</sup></label>
+                <input type="number" name="kaucja" id="kaucja" value="1000" disabled/> 
+                <span id="errorKaucja" class="errors-text"></span> 
+        </form>
+        
+        <p><a href="car-edit.html" class="details-actions-button-edit">Edytuj</a></p> 
+        <h2>Historia wynajmów</h2>
+        <table class="details-list">
+            <thead>
+                <tr>
+                    <th>Imię klienta</th>
+                    <th>Nazwisko klienta</th>
+                    <th>Data wynajmu</th>
+                    <th>Data zwrotu</th>
+                    <th>Przejechany dystans</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Tomasz</td>
+                    <td>Hajto</td>
+                    <td>21.10.2020</td>
+                    <td>22.10.2020</td>
+                    <td>100</td>
+                </tr>
+                <tr>
+                    <td>Mariusz</td>
+                    <td>Pudzianowski</td>
+                    <td>5.10.2020</td>
+                    <td>6.10.2020</td>
+                    <td>12</td>
+                </tr>
+            </tbody>
+        </table>
+        <p><a href="/cars" class="details-actions-button-return">Powrót</a> </p>
+    </main>
+    <%- include('../../fragments/footer.ejs') %>

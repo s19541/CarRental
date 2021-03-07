@@ -1,0 +1,39 @@
+<%- include('../../fragments/header.ejs') %>
+    <main>
+        <h2>Szczegóły wynajmu</h2>
+        <form class="form">
+                <label for="imie" class="">imię:<sup>*</sup></label>
+                <input type="text" name="imie" id="imie" value="Tomasz" disabled/>
+                <span id="errorImie" class="errors-text"></span>
+            
+                <label for="nazwisko">nazwisko:<sup>*</sup></label>
+                <input type="text" name="nazwisko" id="nazwisko" value="Hajto" disabled/>
+                <span id="errorNazwisko" class="errors-text"></span>
+            
+                <label for="marka">marka:<sup>*</sup></label>
+                <input type="text" name="marka" id="marka" value="Ford" disabled/>
+                <span id="errorMarka" class="errors-text"></span>
+           
+                <label for="model">model:<sup>*</sup></label>
+                <input type="text" name="model" id="model" value="Mustang" disabled/>
+                <span id="errorModel" class="errors-text"></span>
+           
+                <label for="dataWynajmu">data wynajmu:<sup>*</sup></label>
+                <input type="date" name="dataWynajmu" id="dataWynajmu" value="2020-10-21" disabled/>
+                <span id="errorDataWynajmu" class="errors-text"></span>
+           
+                <label for="dataZwrotu">data zwrotu:<sup>*</sup></label>
+                <input type="date" name="dataZwrotu" id="dataZwrotu" value="2020-10-22" disabled/>
+                <span id="errorDataZwrotu" class="errors-text"></span>
+           
+                <label for="przejechanyDystans">przejechany dystans:<sup>*</sup></label>
+                <input type="number" name="przejechanyDystans" id="przejechanyDystans" value="100" disabled/>
+                <span id="errorPrzejechanyDystans" class="errors-text"></span>
+                
+                <a href="rent-edit.html" class="details-actions-button-edit">Edytuj</a> 
+                <a href="/rents" class="details-actions-button-return">Powrót</a>  
+                
+        </form>
+    
+    </main>
+    <%- include('../../fragments/footer.ejs') %>

@@ -1,0 +1,37 @@
+<%- include('../../fragments/header.ejs') %>
+    <main>
+        <h2>Szczegóły klienta</h2>
+        <form class="form">
+                <label for="imie">imię:<sup>*</sup></label>
+                <input type="text" name="imie" id="imie" value="Tomasz" disabled/>
+                <span id="errorImie" class="errors-text"></span>
+           
+                <label for="nazwisko">nazwisko:<sup>*</sup></label>
+                <input type="text" name="nazwisko" id="nazwisko" value="Hajto" disabled/> 
+                <span id="errorNazwisko" class="errors-text"></span>   
+        </form>
+        <p><a href="client-edit.html" class="details-actions-button-edit">Edytuj</a></p>
+        <h2>Historia wynajmów</h2>
+        <table class="details-list">
+            <thead>
+                <tr>
+                    <th>Marka</th>
+                    <th>Model</th>
+                    <th>Data wynajmu</th>
+                    <th>Data zwrotu</th>
+                    <th>Przejechany dystans</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Ford</td>
+                    <td>Mustang</td>
+                    <td>21.10.2020</td>
+                    <td>22.10.2020</td>
+                    <td>100</td>
+                </tr>
+            </tbody>
+        </table>
+        <p><a href="/clients" class="details-actions-button-return">Powrót</a> </p>
+    </main>
+    <%- include('../../fragments/footer.ejs') %>
